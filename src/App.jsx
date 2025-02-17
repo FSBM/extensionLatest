@@ -15,7 +15,9 @@ function App() {
           if (session) {
             localStorage.setItem('session', JSON.stringify(session))
             localStorage.setItem('access_token', session.access_token)
+            localStorage.setItem('refresh_token', session.refresh_token)
             document.cookie = `access_token=${session.access_token}; path=/; domain=extension-auth.vercel.app; SameSite=Lax`
+            document.cookie = `refresh_token=${session.refresh_token}; path=/; domain=extension-auth.vercel.app; SameSite=Lax`
             chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
                 chrome.tabs.remove(tabs[0].id);
             });
@@ -30,6 +32,7 @@ function App() {
             localStorage.setItem('session', JSON.stringify(session))
             localStorage.setItem('access_token', session.access_token)
             document.cookie = `access_token=${session.access_token}; path=/; domain=extension-auth.vercel.app; SameSite=Lax`
+            document.cookie = `refresh_token=${session.refresh_token}; path=/; domain=extension-auth.vercel.app; SameSite=Lax`
           }
         })
       
