@@ -7,6 +7,7 @@ import { ThemeSupa } from '@supabase/auth-ui-shared'
 function App() {
 
     const [session, setSession] = useState(null)
+    const [isLogged, setIsLogged] = useState(false)
 
     
 
@@ -107,7 +108,13 @@ function App() {
     }
     
     else {
+      setIsLogged(true)
+      if (isLogged) {
+        window.close()
+      }
       return (<div>Logged in!</div>)
+      
+      
   }
 }
 
